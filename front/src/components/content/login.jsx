@@ -7,6 +7,9 @@ export const Wrap = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.5);
 `;
 
 export const From = styled.form`

@@ -1,28 +1,18 @@
 import { HeaderWrap, Nav, Logo, Wrap } from "../components/header";
-import { NavLink } from "react-router-dom";
+import { useStore } from "../store";
+import { Navigation } from "./navigation";
 
 export const Header = () => {
+    const state = useStore();
+
     const category = [
-        {
-            path: "/",
-            name: "Home",
-        },
-        {
-            path: "/board/list",
-            name: "Board",
-        },
-        {
-            path: "/login",
-            name: "Login",
-        },
-        {
-            path: "/signup",
-            name: "Signup",
-        },
-        {
-            path: "/logout",
-            name: "Logout",
-        },
+        { path: "/", name: "Home" },
+        { path: "/board/list", name: "Board" },
+
+        { path: "/login", name: "Login", isLogin: false },
+        { path: "/signup", name: "Signup", isLogin: false },
+
+        { path: "/logout", name: "Logout", isLogin: true },
     ];
 
     return (
@@ -30,19 +20,7 @@ export const Header = () => {
             <HeaderWrap>
                 <Logo>logo</Logo>
                 <Nav>
-                    <ul>
-                        <li>
-                            <NavLink to="/">HOME</NavLink>
-                        </li>
-                        <li>BOARD</li>
-                        <li>
-                            <NavLink to="/login">LOGIN</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/signup">SIGNUP</NavLink>
-                        </li>
-                        <li>LOGOUT</li>
-                    </ul>
+                    <Navigation category={category} isLogin={state.isLogin} />
                 </Nav>
             </HeaderWrap>
         </Wrap>
