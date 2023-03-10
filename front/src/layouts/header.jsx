@@ -3,7 +3,7 @@ import { useStore } from "../store";
 import { Navigation } from "./navigation";
 
 export const Header = () => {
-    const state = useStore();
+    const { state } = useStore();
 
     const category = [
         { path: "/", name: "Home" },
@@ -13,7 +13,9 @@ export const Header = () => {
         { path: "/signup", name: "Signup", isLogin: false },
 
         { path: "/logout", name: "Logout", isLogin: true },
+        // { name: `${state.user}님` },
     ];
+    console.log(state);
 
     return (
         <Wrap>
