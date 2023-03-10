@@ -1,9 +1,17 @@
 import { Wrap, InputBox, Btn, From } from "../components/content/login.jsx";
+import axios from "axios";
+
+const request = axios.create({
+    baseURL: "http://localhost:3005",
+    withCredentials: true,
+});
 
 export const Signup = () => {
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(`hi`);
+        const userid = e.target.userid.value;
+        const userpw = e.target.userpw.value;
+        const userInsert = await request.post("/users", { userid, userpw });
     };
     return (
         <Wrap>
